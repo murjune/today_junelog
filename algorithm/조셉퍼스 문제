@@ -1,10 +1,11 @@
-조세퍼스
+#조세퍼스
 
 스택을 사용해서 풀려 했지만, 시간복잡도가 N^3으로 시간이 초과하였다
 따라서 큐를 사용하여 문제를 풀 것이다.
 
 1) 스택을 사용하여 풀었다
 
+''' python
 N, M = map(int, input().split())
 
 josep = [i for i in range(1, N+1)]
@@ -12,7 +13,7 @@ josep = [i for i in range(1, N+1)]
 # for i in range(1, N+1):
 #     josep.append(i)
 answer = []
-
+'''
 while len(josep) > 0 :
   for i in range(M-1):
     josep.append(josep.pop(0))
