@@ -33,7 +33,7 @@ print(a) #{1: 'a', 2: 'b', 'name': 'pey'}
 ```
 딕셔너리 a에 'name': 'pey'라는 쌍이 추가되었다.
 
-```
+``` python
 a = {1: 'a', 2: 'b', 'name': 'pey'}
 a[3] = [1,2,3]
 print(a) # {1: 'a', 2: 'b', 'name': 'pey', 3: [1, 2, 3]}
@@ -62,7 +62,7 @@ a = {[1,2] : 'hi'}
 단 Value에는 변하는 값이든 변하지 않는 값이든 상관없이 아무 값이나 넣을 수 있다.
 
 4) 딕셔너리 관련 함수들
-```
+``` python
 #Key, value 리스트 만들기(keys, values, items)
 
 a = {'name': 'pey', 'phone': '0119993323', 'birth': '1118'}
