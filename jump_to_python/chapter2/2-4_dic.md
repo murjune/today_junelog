@@ -1,5 +1,11 @@
 # 딕셔너리
 
+
+``` python
+dic = {Key1:Value1, Key2:Value2, Key3:Value3}
+a = dict()
+```
+
 딕셔너리: 엄청 중요, 순서가 없음
 key와 value로 이루어져있다.
 
