@@ -1,5 +1,14 @@
-주짱블로그 1탄: https://joosjuliet.github.io/sort/
+참고 1: 주짱블로그 1탄: https://joosjuliet.github.io/sort/
 
+참고 2: 정렬 알고리즘 유튜브 강의
+https://www.youtube.com/watch?v=KGyK-pNvWos&list=PLRx0vPvlEmdAghTr5mXQxGpHjWqSz0dgC&index=4
+
+참고 3: https://seongjaemoon.github.io/python/2017/12/16/pythonSort.html
+# 정렬
+```
+정렬이란 데이터를 특정한 기준에 따라 순서대로 나열하는 것
+일반적으로 문제 상황에 따라서 적절한 정렬 알고리즘이 공식처럼 사용된다.
+```
 # 정렬 알고리즘 종류와 특징
 ```
 # 구현은 쉽지만 실행시간이 긴 것 : 
@@ -27,10 +36,20 @@ Stable sort: 정렬 후 기존의 순서가 유지되는 정렬
 
 ## 정렬 전
 
-https://joosjuliet.github.io/images/2018-10-31-sort/stable-sort-1.png
+![image](https://user-images.githubusercontent.com/87055456/133380400-ca4170f1-6a69-4707-bb78-dd976f5926ef.png)
 
 ## 정렬 후
 
 이때 초기에 2(1)과 2(2)의 순서는  유지되는 것을 알 수 있다.
 
 ![image](https://user-images.githubusercontent.com/87055456/133379870-41e8c858-9d3c-46e5-bd1f-3810b9c315dd.png)
+
+# Unstable Sort란?
+```
+Unstable Sort: 정렬 후 기존의 순서가 유지되지 않는 정렬
+퀵정렬, 힙정렬, 선택정렬은 unstable하다.
+```
+![image](https://user-images.githubusercontent.com/87055456/133380688-465b3d06-bed6-4aea-8efc-3fe974ba6ae7.png)
+
+
+
