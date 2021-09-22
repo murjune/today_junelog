@@ -9,7 +9,7 @@ print(a) # [1, 2, 3, 4, 5]
 ```
 
 # 내림차순 정렬
-```
+``` python
 a =[1 ,2 ,5 ,4 ,3]
 a.sort(reverse = True)
 
