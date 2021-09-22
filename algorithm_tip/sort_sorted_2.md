@@ -15,7 +15,19 @@ print(result2)
 ```
 
 ## lamda 
+내장 함수에서 자주 사용된다.
+``` python
+arr = [('이준원', 25), ('양재윤', 24), ('이주원', 31)]
 
+def my_key(x):
+    return x[1]
+
+print(sorted(arr, key = my_key)) 
+# [('양재윤', 24), ('이준원', 25), ('이주원', 31)]
+
+print(sorted(arr, key = lambda x: x[1]))
+# [('양재윤', 24), ('이준원', 25), ('이주원', 31)]
+```
 key 속성을 이용하여 정렬 기준을 명시해 줄 수 있다. 이떄, 정렬 기준을 보통 lamda 함수형태로 넣어 주는 경우가 많다.
 
 ``` python 
