@@ -1,7 +1,7 @@
 참고:https://codechacha.com/ko/python-convert-list-to-string/
 
 # join 함수
-
+join은 문자열,list,tuple형 모두 합칠 수 있다.
 ## ''.join(리스트)
 ```
 
@@ -24,6 +24,7 @@ join 함수는 매개변수로 들어온 리스트에 있는 요소 하나하나
 
 
 출처: https://blockdmask.tistory.com/468 [개발자 지망생]
+
 
 ```
 
