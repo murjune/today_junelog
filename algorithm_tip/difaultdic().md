@@ -1,4 +1,6 @@
 # difaultdic()
+참고1: https://dongdongfather.tistory.com/69
+참고2: https://www.youtube.com/watch?v=zF01pfp1MOo
 difaultdic() 딕셔너리를 만드는 서브클래스이다.
 ```
 difaultdic()와 dict()는 거의 유사하지만
