@@ -1,0 +1,24 @@
+# 문제: 피보나치 수 5_10870
+https://www.acmicpc.net/problem/10870
+
+``` python
+
+
+n = int(input())
+
+def fibo_num(n):
+
+    if n >= 2:
+        return fibo_num(n-1) + fibo_num(n-2)
+
+    else:
+        return n
+
+
+print(fibo_num(n))
+
+
+
+
+
+```
