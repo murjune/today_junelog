@@ -1,4 +1,7 @@
-
+https://github.com/murjune/today_junelog/blob/main/algorithm/%EC%A0%95%EB%A0%AC/7_merge%EC%A0%95%EB%A0%AC.md
+위와 같이 하면 시간 error가 뜬다...  
+이유는 잘 모르겠다. 
+# 가장 빠른 머지정렬 소스코드
 ``` python
 def merge_sort(array):
     if len(array)<=1:
