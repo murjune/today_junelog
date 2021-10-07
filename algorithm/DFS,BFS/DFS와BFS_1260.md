@@ -84,3 +84,29 @@ print(' '.join(map(str, ans_bfs)))
 
 
 ```
+
+## 그래프에 노드의 경로 표시
+
+``` python
+
+arr = [list(map(int, input().split())) for _ in range(m)]
+graph = [[] for _ in range(n+1)]# 0번 노드를 비워 두기 위해 n+1
+for i in arr:
+    graph[i[0]].append(i[1])
+    graph[i[1]].append(i[0])
+    
+```
+위 소스코드를 아래와 같이 표현 할 수도 있다.
+```python
+
+n = 4
+m = 5
+
+graph = [[0 for _ in range(n+1)] for _ in range(n+1)]
+# N x N 크기 graph
+
+for i in range(m):
+    a, b = map(int, input().split())
+    graph[a][b] = graph[b][a] = 1 # 노드의 경로 표시
+
+```
