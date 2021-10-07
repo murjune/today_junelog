@@ -11,6 +11,8 @@ https://www.acmicpc.net/problem/1260
 # 풀이
 ``` python
 
+
+
 # dfs 함수
 ans_dfs = []  # 경로
 def dfs(graph,v, visted):
@@ -24,6 +26,25 @@ def dfs(graph,v, visted):
     for i in graph[v]: # 다음 경로 검사
 
         dfs(graph, i, visted)
+
+
+# bfs 함수
+from collections import deque
+
+ans_bfs = []  # 경로
+def bfs(graph, v, visted):
+    q = deque([v])  # 시작
+    visted[v] = True
+    while q:  # q가 빌때 까지
+        v = q.popleft()
+
+        ans_bfs.append(v)
+        # [[], [2, 3, 4], [1, 4], [1, 4], [1, 2, 3]]
+        for i in graph[v]:
+            if visted[i] == False:  # 방문하지 않았다면
+
+                visted[i] = True  # 방문처리
+                q.append(i)
 
 
 # 입력1
@@ -40,10 +61,11 @@ arr = [list(map(int, input().split())) for _ in range(m)]
 # 방문 유무
 
 visted = [False] * (n+1)
+visted2 = [False] * (n+1)
 
-# graph (인접행렬 방식) 으로 나타내기
+# graph 인접행렬 방식으로 나타내기
 
-graph = [[] for _ in range(n+1)] # 0번 노드를 비워 두기 위해 n+1
+graph = [[] for _ in range(n+1)]# 0번 노드를 비워 두기 위해 n+1
 for i in arr:
     graph[i[0]].append(i[1])
     graph[i[1]].append(i[0])
@@ -53,9 +75,10 @@ for i in range(len(graph)): # 그래프 정렬
 
 # [[], [2, 3, 4], [1, 4], [1, 4], [1, 2, 3]]
 
-# 출력 
-dfs(graph,v,visted)
+dfs(graph, v, visted)
 print(' '.join(map(str, ans_dfs)))
+bfs(graph, v, visted2)
+print(' '.join(map(str, ans_bfs)))
 
 
 
