@@ -59,4 +59,17 @@ immutable한 객체는 생성된 후 수정이 불가능 하다.
 -> Immutable한 객체는 반복 가능한 객체일 경우다.
 ## mutable 객체
 
-Mutable
+Mutable한 객체에는 대표적으로 list가 있다.  
+``` python
+
+a = [1,2,3,4]
+b = a
+print(id(a), id(b)) # 140516163695552 140516163695552
+print(a is b) # True
+print(a,b) # [1, 2, 3, 4] [1, 2, 3, 4]
+```
+위의 방식대로 b의 값을 바꾼다면
+``` python
+
+
+```
