@@ -34,7 +34,7 @@ int a = 1;
 # Integer 자료형 변수 a는 1의 값을 가지며 변수 a와 1은 같은 존재
 ```
 
-예시1) - str
+예시 1) - str(Immutable)
 ``` python
 a = 1
 tmp = a
@@ -63,13 +63,51 @@ Mutable한 객체에는 대표적으로 list가 있다.
 ``` python
 
 a = [1,2,3,4]
-b = a
-print(id(a), id(b)) # 140516163695552 140516163695552
-print(a is b) # True
-print(a,b) # [1, 2, 3, 4] [1, 2, 3, 4]
+tmp = a
+print(id(a), id(tmp)) # 140516163695552 140516163695552
+print(a is tmp) # True
+print(a,tmp) # [1, 2, 3, 4] [1, 2, 3, 4]
 ```
-위의 방식대로 b의 값을 바꾼다면
+위의 방식대로 tmp의 값을 바꾼다면
+
+예시 2) - list(mutable)
 ``` python
 
+a = [1,2,3,4]
+tmp = a
+
+tmp[1] = 0
+print(id(a), id(tmp)) # 140389864813504 140389864813504 (같은 주소값)
+print(a is tmp) # True
+print(a,tmp) # [1, 0, 3, 4] [1, 0, 3, 4]
 
 ```
+Immutable한 str의 결과와 다르게 tmp의 원소값을 바꾸어 주었을 때, a의 값 또한 바뀌었다.  
+이는 list가 mutable한 특징을 가졌기 때문이다.  
+
+자세히 설명하자면, a와 tmp는 같은 주소값을 참조한다는 것을 의미한다.  
+그런데 list는 mutable하기 때문에 tmp값이 바뀌어 버리면 그 주소에 있는 값 또한 바뀌기 때문에  
+같은 주소값을 참조하는 a 또한 값이 바뀌는 것이다.  
+
+예시 3) - list와 str 정리
+``` python
+# str
+a = 1
+tmp = a
+
+print(a is tmp) # True - 각각 동일한 레퍼런스(주소값)를 참조하고 있다.
+
+tmp = 0
+print(a is tmp) # False - int형 변수는 Immutable 하므로 값이 바뀔 수 없어 다른 id 값을 갖음
+
+# list
+b = [1, 2, 3, 4]
+tmp2 = b
+print(b is tmp2) # True - 각각 동일한 레퍼런스(주소값)를 참조하고 있다.
+
+tmp2[1] = 0
+print(b is tmp2) # True - list형 변수는 Mutable하므로 값만 바뀌고 여전히 같은 주소값을 참조한다. 
+                                        # 때문에 tmp2의 값을 바꿔도 b의 값이 따라서 바뀌는 것이다.
+
+```
+![image](https://user-images.githubusercontent.com/87055456/139575575-d32c9b1d-3a79-42de-bd7a-a282da7281cc.png)
