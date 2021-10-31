@@ -57,6 +57,21 @@ print(a is tmp) # False
 immutable한 객체는 생성된 후 수정이 불가능 하다.  
 
 -> Immutable한 객체는 반복 가능한 객체일 경우다.
+
+## 주의
+
+재할당하는 것은 애초에 변수를 다시 할당하는 것이기 때문에, mutable과 immutable과는 다른 문제이다.
+``` python
+s = 'abc'
+# s[0] = 'b' # 'str' object does not support item assignment
+print(s) # abc
+print(id(s)) # 140301282108208
+
+s = 'hi bro'
+print(s) # hi bro
+print(id(s)) # 140301282193904 - 변수 재할당 하였기 때문에 주소값이 바뀜
+
+```
 ## mutable 객체
 
 Mutable한 객체에는 대표적으로 list가 있다.  
