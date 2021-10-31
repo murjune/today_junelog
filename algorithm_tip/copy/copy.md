@@ -35,9 +35,9 @@ print(a,tmp) # [1, 2, 3, 4] [0, 2, 3, 4]
 print(a is tmp) # False
 ```
 
-## 2. copy() 메소드
+## 2. 내장 copy() 함수
 ``` python
-# Shallow copy - copy() 메소드
+# 내장 copy()
 
 a = [1,2,3,4]
 tmp = a.copy()
@@ -47,9 +47,22 @@ print (a is tmp) # False - 다른 주소값
 
 
 ```
+## 3. copy모듈의 copy()
+```python
+# copy() 메소드
+
+import copy
+
+a = [1,2,3,4]
+tmp = copy.copy(a)
+
+print(a,tmp) # [1, 2, 3, 4] [1, 2, 3, 4]
+print (a is tmp) # False - 다른 주소값
+
+```
 # 그러나!! 주의!!  
 
-슬라이싱과 copy() 메소드 같은 얕은 복사를 사용할 떄 주의해야할 점이 있다.  
+위와 같은 얕은 복사를 사용할 떄 주의해야할 점이 있다.  
 
 리스트안에 리스트가 들어가 있는 이중 리스트의 경우  
 즉, mutable한 객체 안에 mutable한 객체가 들어가 있는 경우에는 문제가 된다...  
@@ -130,3 +143,6 @@ print(a[0] is tmp[0]) # False - 다른 주소값
 print(a[1] is tmp[1]) # False - 다른 주소값
 
 ```
+
+각 방법 별로 처리 속도가 다르므로, 상황에 알맞은 방법을 사용하면 좋을 것 같다!  
+처리속도는 list슬라이싱이 가장 빠르고, copy 모듈의 deepcopy()가 가장 느리다고 한다.
