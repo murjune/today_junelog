@@ -55,3 +55,12 @@ result = ' '.join(map(str, str_list))
 print(result) # 1 2 3 4 5
 
 ```
+
+
+# 문자열 -> list() -> 원소를 int형으로
+``` python
+
+s = '1234'
+arr = [int(x) for x in s]
+print(arr)
+```
