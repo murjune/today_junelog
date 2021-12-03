@@ -1,4 +1,4 @@
-# 문제:N-Queen - (1)
+# 문제:N-Queen - (2)
 https://www.acmicpc.net/problem/9663. 
 
 ```
