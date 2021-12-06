@@ -7,5 +7,5 @@
 import sys
 
 Min = sys.maxsize
-Min = -sys.maxsize
+Max = -sys.maxsize
 ```
