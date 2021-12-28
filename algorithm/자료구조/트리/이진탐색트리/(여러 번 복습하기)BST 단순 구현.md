@@ -1,3 +1,4 @@
+# 적어도 10번 이상 구현 연습하기 -> 재귀함수로도 구현해보자
 # 해결해야 할 점
 
 1. 만약 BST가 unbalanced한 점 
@@ -50,9 +51,11 @@ class BST():
         self.parent = None
         is_child_right = None
         flag = False
+
         while self.now:
             if self.now.node == value:
                 flag = True
+                break
             elif self.now.node > value:
                 self.parent = self.now
                 self.now = self.now.left
@@ -61,6 +64,7 @@ class BST():
                 self.parent = self.now
                 self.now = self.now.right
                 is_child_right = True
+
         if flag == False:
             print("트리 안에 해당 값이 없습니다.")
             return
@@ -92,7 +96,7 @@ class BST():
             self.change = self.now.left
             self.change_parent = self.now
             # 서브트리의 왼쪽트리의 가장 오른쪽에 위치한 노드 찾기
-            while self.change:
+            while self.change.right:
                 self.change_parent = self.change
                 self.change = self.change.right
             # 1) 가장 오른쪽 노드가 왼쪽 자식을 갖을 경우
@@ -108,29 +112,32 @@ class BST():
             # 이제 change 노드를 now노드에 넣기
 
             if is_child_right:
-                self.change_parent.right = self.change
+                self.parent.right = self.change
                 self.change.left = self.now.left
                 self.change.right = self.now.right
             else:
-                self.change_parent.left = self.change
+                self.parent.left = self.change
                 self.change.left = self.now.left
                 self.change.right = self.now.right
+        print(self.root.left.node)
         print("요청하신 값을 삭제하였습니다.")
         return
+
 arr = [3,8,2,4,7,9,1,6,10]
 root = Node(5)
 bst = BST(root)
 for i in arr:
     bst.insert(i)
+
 print(bst.search(3)) # True
 print(bst.search(4)) # True
 print(bst.search(1)) # True
-bst.delete(1) # 요청하신 값을 삭제하였습니다.
-print(bst.search(6)) # None
+bst.delete(6) # 요청하신 값을 삭제하였습니다.
+print(bst.search(6)) # False
 bst.delete(3) # 요청하신 값을 삭제하였습니다.
 bst.delete(8) # 요청하신 값을 삭제하였습니다.
-bst.delete(11) # 삭제할 노드가 트리안에 존재하지 않습니다.
-print(bst.search(3)) # None
-print(bst.search(8)) # None
+bst.delete(11) # 트리 안에 해당 값이 없습니다.
+print(bst.search(3)) # False
+print(bst.search(8)) # False
 
 ```
