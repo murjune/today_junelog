@@ -1,3 +1,8 @@
+# 해결해야 할 점
+
+1. 만약 BST가 unbalanced한 점 
+2. root를 모를 경우
+3. root를 삭제할 경우
 ``` python
 
 class Node():
