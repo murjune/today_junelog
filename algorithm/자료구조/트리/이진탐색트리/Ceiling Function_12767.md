@@ -2,7 +2,7 @@
 
 https://www.acmicpc.net/problem/12767. 
 
-bst의 구현 + pre_order
+bst의 구현 + pre_order 순회
 # 풀이
 ``` python
 class Node():
@@ -43,18 +43,18 @@ class BST():
 
 def pre_order(now):
     global ans
-    ans += 'N'
+    ans += 'N' # now 노드에 방문
     if now == None:
         return
 
     if now.left:
-        ans += 'L'
+        ans += 'L' # 왼쪽 간선으로 들어감
         pre_order(now.left)
-        ans += 'l'
+        ans += 'l' # 왼쪽 간선으로 나감
     if now.right:
-        ans += 'R'
+        ans += 'R' # 오른쪽 간선으로 들어감
         pre_order(now.right)
-        ans += 'r'
+        ans += 'r' # 오른쪽 간선으로 나감
 
 import  sys
 input = lambda : sys.stdin.readline().rstrip()
