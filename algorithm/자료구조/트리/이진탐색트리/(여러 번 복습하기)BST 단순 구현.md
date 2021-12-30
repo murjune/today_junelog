@@ -1,9 +1,158 @@
-# 적어도 10번 이상 구현 연습하기 -> 재귀함수로도 구현해보자
+# 적어도 10번 이상 구현 연습하기 -> 1) 단순 구현 (3) 2) 재귀함수로도 구현해보자
 # 해결해야 할 점
 
-1. 만약 BST가 unbalanced한 점 
-2. root를 모를 경우
-3. root를 삭제할 경우
+1. 만약 BST가 unbalanced한 점 -> 넣을 arr를 balance하게 조정해준다.
+2. root가 bst안에 입력 받지 않았을 경우 -> 해결
+3. root를 삭제할 경우 -> 해결
+
+# BST 파이썬 코드 Ver. 2 - 해결해야 할 점 모두 고려
+``` python
+
+class Node():
+    def __init__(self,value):
+        self.node = value
+        self.left = None
+        self.right = None
+
+class BST():
+    def __init__(self):
+        self.root = None
+
+    def insert(self,value):
+        # 만약 루트 노드가 없다면
+        if self.root is None :
+            self.root = Node(value)
+            return
+
+        self.now = self.root
+        while True:
+
+            if value < self.now.node:
+                if self.now.left == None:
+                    self.now.left = Node(value)
+
+                    break
+                else:
+                    self.now = self.now.left
+            else:
+                if self.now.right == None:
+                    self.now.right = Node(value)
+
+                    break
+                else:
+                    self.now = self.now.right
+
+    def search(self,value):
+        self.now = self.root
+        while self.now:
+            if self.now.node == value:
+                return True
+            if value < self.now.node:
+                self.now = self.now.left
+            else:
+                self.now = self.now.right
+        return False
+
+    def delete(self, value):
+        self.now = self.root
+        self.parent = self.root
+        is_child_right = None
+        flag = False
+
+        while self.now:
+            if self.now.node == value:
+                flag = True
+                break
+            elif self.now.node > value:
+                self.parent = self.now
+                self.now = self.now.left
+                is_child_right = False
+            else:
+                self.parent = self.now
+                self.now = self.now.right
+                is_child_right = True
+
+        if flag == False:
+            print("트리 안에 해당 값이 없습니다.")
+            return
+
+        # 1. 자식이 없는 경우
+
+        if not self.now.left and not self.now.right:
+            if is_child_right:
+                self.parent.right = None
+            else:
+                self.parent.left = None
+        # 2. 자식이 하나 있는 경우
+
+        # 1) 오른쪽 자식만 있는 경우
+        if not self.now.left and self.now.right:
+            if is_child_right:
+                self.parent.right = self.now.right
+            else:
+                self.parent.left = self.now.right
+        # 2) 왼쪽 자식만 있는 경우
+        if self.now.left and not self.now.right:
+            if is_child_right:
+                self.parent.right = self.now.left
+            else:
+                self.parent.left = self.now.left
+        # 3. 자식이 둘다 있는 경우
+        if self.now.left and self.now.right:
+            # now를 루트로 삼는 서브트리의 왼쪽트리의 가장 오른쪽에 위치한 노드를 now자리에 change
+            self.change = self.now.left
+            self.change_parent = self.now
+            # 서브트리의 왼쪽트리의 가장 오른쪽에 위치한 노드 찾기
+            while self.change.right:
+                self.change_parent = self.change
+                self.change = self.change.right
+            # 1) 가장 오른쪽 노드가 왼쪽 자식을 갖을 경우
+            # change의 왼쪽 자식이 change 자리에 들어간다.
+            if self.change.left:
+                self.change_parent.right = self.change.left
+
+            # 2) 가장 오른쪽 노드가 왼쪽 자식을 갖지 않을 경우
+            # change 삭제
+            else:
+                self.change_parent.right = None
+
+            # 이제 change 노드를 now 노드에 넣기
+            if is_child_right:
+                if self.parent != self.now:
+                    self.parent.right = self.change
+                    self.change.left = self.now.left
+                    self.change.right = self.now.right
+                else:
+                    self.root = self.change
+                    self.change.left = self.now.left
+                    self.change.right = self.now.right
+
+            else:
+                if self.parent != self.now:
+                    self.parent.left = self.change
+                    self.change.left = self.now.left
+                    self.change.right = self.now.right
+                else:
+                    self.root = self.change
+                    self.change.left = self.now.left
+                    self.change.right = self.now.right
+
+        print("요청하신 값을 삭제하였습니다.")
+        return
+
+arr = [5, 3,8,2,4,7,9,1,6,10]
+
+bst = BST()
+for i in arr:
+    bst.insert(i)
+
+# root 노드 삭제
+bst.delete(5) # 요청하신 값을 삭제하였습니다.
+print(bst.search(5)) # False
+print(bst.root.node) # 새로운 root 노드 4
+
+```
+# BST 파이썬 코드 Ver. 1
 ``` python
 
 class Node():
