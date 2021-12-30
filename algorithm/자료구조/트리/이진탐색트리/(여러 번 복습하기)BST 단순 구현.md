@@ -48,7 +48,7 @@ class BST():
 
     def delete(self, value):
         self.now = self.root
-        self.parent = None
+        self.parent = self.root
         is_child_right = None
         flag = False
 
