@@ -1,7 +1,6 @@
 
 # 파이썬 소스코드
 ``` python
-# 문제점 for i in range(hash, self.size): 에 빈공간이 없다면???
 class CloseHash:
     def __init__(self,size):
         self.size = size
