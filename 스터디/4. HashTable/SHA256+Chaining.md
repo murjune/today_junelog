@@ -16,7 +16,7 @@ class OpenHash:
         Hash_object = hashlib.sha256()
         Hash_object.update(key.encode('utf-8'))
         hex_dig = Hash_object.hexdigest()
-        Hash = hash(hex_dig)
+        Hash = int(hex_dig,16)
         Hash%= self.size
         return Hash
 
@@ -57,29 +57,24 @@ class OpenHash:
                     return
             print("요청하신 값이 해쉬테이블 내에 없습니다.")
 
-h_table = OpenHash(8)
-
 ```
 # 테스트 케이스
 ```python
 # Test
-
 h_table = OpenHash(8)
-
 h_table.save_data('aa', '1111')
 h_table.save_data('ad', '2222')
 
 # 단순히 아스키 코드를 썼을 때와 다르게 Collison이 일어나지 않았다!!
 
-print(h_table.hash_table) # [[['ad', '2222']], 0, [['aa', '1111']], 0, 0, 0, 0, 0]
+print(h_table.hash_table) # [0, 0, 0, 0, 0, 0, [['aa', '1111']], [['ad', '2222']]]
 
 h_table.read_data('aa') # 1111
 h_table.read_data('ad') # 2222
 
 h_table.remove_data('aa')
-print(h_table.hash_table) # [[['ad', '2222']], 0, 0, 0, 0, 0, 0, 0]
+print(h_table.hash_table) # [0, 0, 0, 0, 0, 0, 0, [['ad', '2222']]]
 
 h_table.remove_data('Data') # 요청하신 값이 해쉬테이블 내에 없습니다.
-print(h_table.hash_table) # [0, 0, 0, 0, 0, 0, 0, 0]
-
+print(h_table.hash_table) # [0, 0, 0, 0, 0, 0, 0, [['ad', '2222']]]
 ```
