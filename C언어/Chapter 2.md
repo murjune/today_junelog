@@ -1,4 +1,4 @@
-# Chapter 2
+# Chapter 2 - 반복
 
 # 1. 쁠쁠(++)
 
@@ -43,7 +43,7 @@ for , while ,do while 문이 있다.
 ## 1. for
 
 for(선언 ; 조건 ; 증감)
-- 예시) for(int i = 1; if i <= 10 ; i++). 
+- 예시) **for(int i = 1; if i <= 10 ; i++){}**  
   > + 정수형 변수 i는 1이다.  
   > + i가 10 이하면  
   > + i를 처리해준 후, 1을 더한다.
@@ -72,4 +72,98 @@ int main(void)
 8
 9
 10
+```
+## 2. While
+
+** while (조건) {} **
+``` c
+# include <stdio.h>
+int main(void)
+{   
+    // while
+    int i = 1;
+    while(i <= 10)
+    {
+        printf("%d\n", i++); 
+    }
+    return 0;
+    
+}
+```
+## 3. Do while
+
+** do {} while(조건); **
+``` c
+# include <stdio.h>
+int main(void)
+{   
+    // while
+    int i = 1;
+    do {
+        printf("%d\n", i++);
+    }
+    while(i <= 10);
+    return 0;
+    
+}
+```
+# 3. 이중 반복문
+
+## 구구단
+```c
+# include <stdio.h>
+int main(void)
+{   
+    // 이중 for 문 - 구구단
+    for(int i = 1; i <= 9; i++)
+    {   
+        printf("%d단\n", i);
+        for (int j = 1; j<=9; j++)
+        {
+            printf("%d x %d = %d\n", i, j, i*j);
+        }
+    }
+    return 0;
+}
+```
+## 별찍기 1
+```c
+# include <stdio.h>
+int main(void)
+{   
+    // 이중 for 문 - 별찍기 5단
+
+    for(int i = 0 ; i < 5; i++)
+    {   
+        for(int j = 0; j <= i ; j ++)
+        {
+            printf("*");
+        } 
+        printf("\n");
+    }
+    return 0;
+}
+```
+## 별 찍기 2 - 거꾸로 별찍기
+``` c
+# include <stdio.h>
+int main(void)
+{   
+    // 이중 for 문 - 별찍기 5단
+
+    for(int i = 0 ; i < 5; i++)
+
+    {   for (int k = 1; k < 5-i; k++)
+        {
+            printf(" ");
+        }
+
+        for(int j = 0; j <= i ; j ++)
+        {
+            printf("*");
+        } 
+        printf("\n");
+    }
+    return 0;
+}
 ```
