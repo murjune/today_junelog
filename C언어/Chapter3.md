@@ -189,7 +189,9 @@ int main(void)
 ---
 ## switch case
 
-switch : 값을 받아서 경우에 맞게 출력하는  조건문
+switch : 값을 받아서 경우에 맞게 출력하는  조건문. 
+
+예제 1
 ``` c
 # include <time.h>
 # include <stdlib.h>
@@ -206,6 +208,38 @@ int main(void)
         case 1: printf("바위\n");break;
         case 2: printf("보\n");break;
         default: printf("몰라요\n");break;
+    }
+    return 0;
+}
+```
+예제 2 - switch 문의 활용(feat. break)
+``` c
+# include <time.h>
+# include <stdlib.h>
+# include <stdio.h>
+
+int main(void)
+{   
+    
+    int age = 12; 
+
+    switch(age) 
+    {
+        
+        case 8: 
+        case 9:
+        case 10: 
+        case 11: 
+        case 12: 
+        case 13:printf("초등 학생입니다.\n");break; 
+        case 14: 
+        case 15: 
+        case 16: printf("중학생입니다.\n"); break; 
+        case 17: 
+        case 18: 
+        case 19: printf("고등학생입니다.\n"); break;
+
+        default: printf("학생이 아닙니다.\n"); break;
     }
     return 0;
 }
