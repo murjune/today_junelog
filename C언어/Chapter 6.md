@@ -263,3 +263,11 @@ void changeArray(int* ptr)
 
 }
 ```
+이떄, 
+```c
+changeArray(arr); 
+```
+이거 대신 아래와 같이 표현해도 동일하다.
+```c
+changeArray(&arr[0]);
+```
