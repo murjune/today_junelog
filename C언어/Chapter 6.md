@@ -89,3 +89,177 @@ int main(void)
     return 0;
 }   
 ```
+## 3. 배열과 포인터의 관계
+
+### 예제 1
+```c
+
+# include <stdio.h>
+
+int main(void)
+{
+    // 배열과 포인터의 관계
+    int arr[3] = {5,10,15};
+    int* ptr = arr; // 포인터가 arr배열을 가르침
+
+    for(int i = 1 ; i<3; i++ )
+    {
+        printf("배열 arr[%d]의 값 : %d\n", i , arr[i]);
+    }
+
+    for(int i = 1 ; i<3; i++ )
+    {
+        printf("포인터 ptr[%d]의 값 : %d\n", i , ptr[i]);
+    }
+    return 0;
+
+    /* 출력값 동일!!
+
+    배열 arr[1]의 값 : 10
+    배열 arr[2]의 값 : 15
+    포인터 ptr[1]의 값 : 10
+    포인터 ptr[2]의 값 : 15
+    */
+}   
+```
+
+### 예제 2
+위에 예제 ptr, arr과 같음 가정
+```c
+ptr[0] = 10;
+ptr[1] = 20;
+ptr[2] = 30;
+
+for(int i = 0 ; i<3; i++ )
+{
+    printf("배열 arr[%d]의 값 : %d\n", i , arr[i]);
+}
+
+for(int i = 0 ; i<3; i++ )
+{
+    printf("포인터 ptr[%d]의 값 : %d\n", i , ptr[i]);
+}
+
+/*
+배열 arr[0]의 값 : 10
+배열 arr[1]의 값 : 20
+배열 arr[2]의 값 : 30
+포인터 ptr[0]의 값 : 10
+포인터 ptr[1]의 값 : 20
+포인터 ptr[2]의 값 : 30
+*/
+
+```
+즉, 위의 예제를 통해 ptr 과 arr는 같다는 결과를 도출해낼 수 있다.  
+
+추가로 위의 예제를 아래와 같이 나타낼수도 있다.
+``` c
+
+ptr[0] = 10;
+ptr[1] = 20;
+ptr[2] = 30;
+
+for(int i = 0 ; i<3; i++ )
+{
+    // printf("배열 arr[%d]의 값 : %d\n", i , arr[i]);
+    printf("배열 arr[%d]의 값 : %d\n", i , *(arr + i));
+}
+
+for(int i = 0 ; i<3; i++ )
+{
+    printf("포인터 ptr[%d]의 값 : %d\n", i , *(ptr + i));
+}
+return 0;
+/*
+배열 arr[0]의 값 : 10
+배열 arr[1]의 값 : 20
+배열 arr[2]의 값 : 30
+포인터 ptr[0]의 값 : 10
+포인터 ptr[1]의 값 : 20
+포인터 ptr[2]의 값 : 30
+*/
+```
+이를 통해 알아낸 점
+- *(arr +i)는 arr[i]와 동일한 표현  
+- 즉, arr = arr 배열의 첫번째 값의 주소와 동일 = &arr[0]  
+
+다음 예제를 보며, 이를 증명하자.
+```c
+printf("arr 자체의 값: %p\n", arr);
+printf("arr[0]의 주소: %p\n", &arr[0]);
+
+printf("arr 자체의 값이 가지는 주소의 실제 값: %d\n", *arr);
+printf("arr 자체의 값: %d\n", *&arr[0]);
+
+/*
+arr 자체의 값: 0x16baab4c8
+arr[0]의 주소: 0x16baab4c8
+arr 자체의 값이 가지는 주소의 실제 값: 10
+arr 자체의 값: 10
+*/
+```  
+즉, 우리는 다음을 알 수 있다.  
+- *&는 아무것도 없는 것과 같다.  
+- &는 주소이면, *은 그 주소의 값이기 때문에   
+- *&는 상쇄된다.  
+
+이 또한, 예제로 확인!
+```c
+printf("arr[0]의 실제 값 : %d\n", *&*&*&*&*&arr[0]);
+printf("arr[0]의 실제 값 : %d\n", arr[0]);
+
+//arr[0]의 실제 값 : 10
+//arr[0]의 실제 값 : 10
+```
+### 4. swap
+
+``` c
+
+# include <stdio.h>
+
+int main(void)
+{   
+    // swap 전
+    int a = 10;
+    int b = 20;
+    printf("a, b : %d, %d\n", a, b);
+    // a, b : 10, 20
+
+    // swap
+    int tmp;
+    tmp = b;
+    b = a;
+    a = tmp;
+
+    // swap 후
+    printf("a, b : %d, %d\n", a, b);
+    a, b : 20, 10
+    
+    return 0;
+}   
+```
+
+## 5. 포인터로 배열 값 변경하기
+
+``` c
+
+# include <stdio.h>
+void changeArray(int* ptr);
+int main(void)
+{   
+    // swap 전
+    int arr[3] = {1,2,3};
+    changeArray(arr);
+    for (int i = 0; i < 3; i++)
+    {
+        printf("%d\n", arr[i]);
+    }
+    return 0;
+}   
+
+void changeArray(int* ptr)
+{
+    *(ptr + 2) = 50; // ptr[2] = 50과 같은 표현
+
+}
+```
