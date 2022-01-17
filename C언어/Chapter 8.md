@@ -202,6 +202,10 @@ int main(void)
 ```
 
 ## 5. typedef
+```c
+typedef (자료형) (새 이름) ; 
+```
+typedef 선언은 기존에 존재하는 자료형의 이름에 새 이름을 부여하는 것을 목적으로 하는 선언이다.  
 
 ```c
 // typedef
@@ -213,4 +217,42 @@ int main(void)
 	f f1 = 3.34f; // float f = 3.34;
 	printf("정수 변수 : %d 실수 변수 : %.2f\n", d1, f1);
 	// 정수 변수 : 3 실수 변수 : 3.34
+```
+
+## 5-1 구조체와 typedef 예제
+
+```c
+# include <stdio.h>
+
+typedef struct
+{
+    char* name;
+    int age;
+    char* hobby;
+}Man;
+
+int main(void)
+{
+    Man June = {"murjune",26,"coding"};
+    printf("===머준원의 개인 정보===\n");
+    printf("이름 : %s\n", June.name);
+    printf("나이: %d\n",June.age);
+    printf("취미: %s\n",June.hobby);
+/*
+===머준원의 개인 정보===
+이름 : murjune
+나이: 26
+취미: coding
+*/
+    
+    return 0;
+}
+
+```
+## 5-2 함수로의 구조체 변수 전달과 반환
+
+함수의 인자로 구조체 변수가 전달될 수 있으며, 이러한 인자를 전달 받을 수 있도록 구조체 변수가 매개변수의 선언으로 올 수 있다.  
+그리고, 구조체 변수의 값은 매개변수 통째로 복사가 된다.
+```c
+
 ```
