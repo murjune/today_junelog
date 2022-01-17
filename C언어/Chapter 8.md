@@ -254,5 +254,39 @@ int main(void)
 함수의 인자로 구조체 변수가 전달될 수 있으며, 이러한 인자를 전달 받을 수 있도록 구조체 변수가 매개변수의 선언으로 올 수 있다.  
 그리고, 구조체 변수의 값은 매개변수 통째로 복사가 된다.
 ```c
+# include <stdio.h>
+
+typedef struct
+{
+    char name[20];
+    int age;
+    char hobby[20];
+}Man;
+
+
+Man GetMurjuneInfo();
+void ShowMurjuneInfo(Man info);
+
+int main(void)
+{   
+    // 구조체 변수 June을 함수가 반환하는 값으로 초기화 중
+    Man June = GetMurjuneInfo();
+    // 함수를 호출하면서 변수 June을 인자로 전달 중 
+    ShowMurjuneInfo(June);
+
+    return 0;
+}
+Man GetMurjuneInfo()
+{
+    Man murjune;
+    printf("===머준원의 신상정보를 입력하시오===\n");
+    scanf("%s\n %d\n %s", murjune.name, &murjune.age, murjune.hobby);
+    
+    return murjune;
+}
+void ShowMurjuneInfo(Man info)
+{
+    printf("[%s, %d, %s]\n", info.name, info.age, info.hobby);
+}
 
 ```
