@@ -1,0 +1,49 @@
+# [Min Max Riddle](https://www.hackerrank.com/challenges/min-max-riddle/problem?isFullScreen=true&h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=stacks-queues)
+
+# 풀이
+```python
+from collections import defaultdict
+# Complete the riddle function below.
+def riddle(arr):
+    arr.append(0)
+    nums_MaxWindows = defaultdict(int)
+    stack = []
+    # step 1
+    for i in range(n+1):
+
+        while stack and stack[-1][1] >= arr[i]:
+
+            idx, nums = stack.pop()
+            if stack:
+                nums_MaxWindows[arr[i]] = max(nums_MaxWindows[arr[i]] ,i-stack[-1][0])
+                nums_MaxWindows[nums] = max(nums_MaxWindows[nums],i - stack[-1][0]-1)
+            else:
+                nums_MaxWindows[arr[i]] = max(nums_MaxWindows[arr[i]], i+ 1)
+                nums_MaxWindows[nums] = max(nums_MaxWindows[nums],i)
+
+        stack.append((i,arr[i]))
+    del nums_MaxWindows[0]
+    # print(stack)
+    # print(nums_MaxWindows)
+
+    # step 2
+    D = defaultdict(int)
+    for key in nums_MaxWindows:
+
+        D[nums_MaxWindows[key]] = max(D[nums_MaxWindows[key]], key)
+    # print(D)
+
+    # step 3
+    ans = [0]*(n+1)
+    for i in range(1,n+1):
+        ans[i] = max(D[i], ans[i])
+        for j in range(i-1,0,-1):
+            if ans[j] < ans[i]:
+                ans[j] = ans[i]
+            else:
+                break
+
+    # print(ans)
+    # print(ans[1:])
+    return ans[1:]
+```
