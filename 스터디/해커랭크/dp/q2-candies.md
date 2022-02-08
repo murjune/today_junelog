@@ -1,3 +1,4 @@
+# 문제: [Candies](https://www.hackerrank.com/challenges/candies/problem?isFullScreen=true&h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=dynamic-programming)
 # 풀이 1   
 수열을 선형 탐색하면서, 
 - case 1: c[i-1] < c[i] (=오름차순)인 경우를 만나면 d[i] = d[i-1] + 1로 dp테이블을 갱신해준다.  
