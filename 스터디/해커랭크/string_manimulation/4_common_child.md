@@ -47,3 +47,26 @@ def commonChild(s1, s2):
                 d[j] = cnt + 1
     return max(d)
 ```
+좀 더 풀어서 쓴 파이썬소스코드
+```python
+def commonChild(s1, s2):
+    # Write your code here
+    n, m = len(s1), len(s2)
+    d = [0] * (5000)
+
+    for i in range(n):
+        cnt = 0
+        for j in range(m):
+            if s1[i] != s2[j]:
+                if cnt < d[j]: # 만약 d[j]가 더 크면 cnt갱신
+                    cnt = d[j]
+
+            if s1[i] == s2[j]:
+                if cnt < d[j]:
+                    cnt = d[j] # (i,j)이전까지의 lcs값인 cnt보다 d[j]가 더 크므로 d[j]값은 바뀌지 않음
+                else:
+                    d[j] = cnt + 1 # cnt가 더 크거나 같으니까 cnt+1로 d[j]갱신
+    
+    return max(d)
+               
+```
