@@ -1,6 +1,4 @@
-[참고 문헌 ]: https://wikidocs.net/109303
----
-
+[참고문헌](https://wikidocs.net/109303)
 # cmp_to_key
 
 `functools.cmp_to_key(func)` 함수는 sorted와 같은 정렬 함수의 key 매개변수에 함수(func)를 전달할 때 사용하는 함수이다.  
@@ -34,5 +32,7 @@ print(arr) #[(1, -1), (1, 2), (2, 2), (3, 3), (0, 4)]
 # 동일
 arr2 = sorted(arr, key = lambda x : (x[1],x[0]))
 print(arr2) # #[(1, -1), (1, 2), (2, 2), (3, 3), (0, 4)]
-```
+```  
+
+
 
