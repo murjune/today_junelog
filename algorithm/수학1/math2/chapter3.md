@@ -18,12 +18,30 @@ for i in range(3,n+1):
 
 write(fibo[n])
 ```
-# [피사노주기](https://www.acmicpc.net/problem/9471)
+# [피사노주기](https://www.acmicpc.net/problem/9471) : 백준 피사노주기 문제
 피보나치 수를 K로 나눈 나머지는 주기를 갖는데, 이것을 `피사노 주기`라고 한다.  
 - e. 3으로 나누었을 때의 피사노주기는 8이다.  
 - M = 10<sup>k</sup> 일 때, k > 2라면 주기는 항상 `15 x 10<sup>k-1</sup>`
-<img  width = "700" src=https://user-images.githubusercontent.com/87055456/161816672-4b8c72ae-6e08-4e0d-8425-16f85e66e91a.png>   
+<img  width = "700" src=https://user-images.githubusercontent.com/87055456/161816672-4b8c72ae-6e08-4e0d-8425-16f85e66e91a.png>  
 
+
+```python
+# 피사노 주기 구하는 코드
+
+for t in range(int(input())):
+    n , MOD = map(int,input().split())
+    cnt = 0 # 주기
+    f1 , f2 = 1, 1
+    while (1):
+        tmp = f1
+        f1 = (f1%MOD + f2%MOD) %MOD
+        f2 = tmp
+        cnt += 1
+        if f1 == 1 and f2 == 1:
+            break
+
+    print(t+1,cnt)
+```
 ## [피보나치수 3](https://www.acmicpc.net/problem/2747)  
 
 O(N)의 알고리즘으로는 해결할 수 없다. 따라서, 피사노 주기를 사용해서 피보나치 수를 구해보자!!  
