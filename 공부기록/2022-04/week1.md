@@ -23,7 +23,7 @@
 - 피보나치 수열 관련 문제 풀이 및 포스팅 완료!
 ## 자바
 - 컬렉션 프레임워크(ArrayList 하는중!)  
-> 내일 linkedList, Stack, Queue 
+> 내일 linkedList, Stack, Queue 구현해보저
 ## 안드
 - 과제 2번째꺼
 # 4월 7일 (목)
