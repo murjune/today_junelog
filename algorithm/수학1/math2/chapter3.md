@@ -42,7 +42,7 @@ for t in range(int(input())):
 
     print(t+1,cnt)
 ```
-## [피보나치수 3](https://www.acmicpc.net/problem/2747)  
+## [피보나치수 3](https://www.acmicpc.net/problem/2749)  
 
 O(N)의 알고리즘으로는 해결할 수 없다. 따라서, 피사노 주기를 사용해서 피보나치 수를 구해보자!!  
 - n은 1,000,000,000,000,000,000보다 작거나 같은 자연수  
@@ -71,7 +71,7 @@ for i in range(3,P+1):
 write(fibo[n%P])
 ```
 - 이번에는 피사노 주기가  `15 x 10<sup>k-1</sup>` 이라는 사실을 모른다고 가정하고 문제를 풀어보자!
-# 피보나치 수
+# 피보나치 수의 성질
 <img  width = "700" src="https://user-images.githubusercontent.com/87055456/161807165-05c46cbe-2636-4ff6-b310-2478c62c24b8.png">  
 
 
@@ -80,6 +80,46 @@ write(fibo[n%P])
 
 > 직접 종이에 써서 증명해보자
 
-# 개선된 방법 1 : 행렬의 제곱-(O(logn))
+# [피보나치 수 6](https://www.acmicpc.net/problem/11444)
+- 피보나치 수의 성질을 이용해 피보나치 수6 문제를 풀어보자!  
+- 행렬의 제곱(분할정복기법)을 사용해서 풀었다!!
+```python
 
-# 개선된 방법 2 : 분할정복기법-((O(logn)))
+import sys
+read = lambda : sys.stdin.readline().rstrip()
+write = lambda x: sys.stdout.write(str(x)+ "\n")
+# 행렬 제곱 구하기
+def cal(A,B):
+
+    n,m,l = len(A), len(A[0]),len(B[0])
+    ans = [[0]*l for _ in range(n)]
+    for i in range(n):
+        for j in range(l):
+            for k in range(m):
+                ans[i][j] += (A[i][k]%MOD)*(B[k][j]%MOD) % MOD
+
+            ans[i][j] %= MOD
+
+    return ans
+def mul(x):
+    if x == 1 : return A
+
+    if x % 2 :
+        tmp = cal(A,mul(x-1))
+        return tmp
+    else:
+        tmp = mul(x//2)
+        return cal(tmp,tmp)
+
+
+
+n = int(read())
+MOD = 1_000_000_007
+
+A = [[1,1],[1,0]]
+B = [1,0]
+
+# fibo = cal(mul(n),[[1],[0]])
+write(mul(n)[0][1])
+
+```
