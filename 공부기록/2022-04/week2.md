@@ -19,11 +19,12 @@
 
 ## 자바
 > LinkedList, Stack, LinkedList 포스팅  
-> Arrays, HashSet 공부  
+> HashSet 공부  
+- Arrays
 
 ## 알고리즘
 > 수학 2 - 2
 
 ## 안드로이드
-> Decoration 공부  
+- Decoration 공부, rectangle 모서리 둥글게 만드는거 배움
 > 필수과제 끝내기
