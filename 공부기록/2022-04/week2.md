@@ -28,3 +28,9 @@
 ## 안드로이드
 - Decoration 공부, rectangle 모서리 둥글게 만드는거 배움
 > 필수과제 끝내기
+
+# 4월 14일(목)
+
+## 안드로이드
+- 코딱지 스터디  
+- 데코레이션, androidx.appcompat.widget.AppCompatButton, chain, 
