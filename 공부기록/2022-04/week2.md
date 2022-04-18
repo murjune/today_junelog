@@ -40,4 +40,11 @@
 - 필수과제 끝냄!!  
 - 크기관리 dimens Xml 사용법 공부 
 - https://recipes4dev.tistory.com/154 
-- https://medium.com/@limgyumin/%EC%BD%94%ED%8B%80%EB%A6%B0-%EC%9D%98-apply-with-let-also-run-%EC%9D%80-%EC%96%B8%EC%A0%9C-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94%EA%B0%80-4a517292df29
+- https://medium.com/@limgyumin/%EC%BD%94%ED%8B%80%EB%A6%B0-%EC%9D%98-apply-with-let-also-run-%EC%9D%80-%EC%96%B8%EC%A0%9C-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94%EA%B0%80-4a517292df29. 
+
+# 4월 16일(토)
+## 안스
+- 성장과제 3 - 3 ItemTouchHelper & Callback 클래스 공부
+# 4월 17일(일)
+## 안스
+- 성장과제 3 - 3 예제 끝!!
