@@ -75,26 +75,24 @@ print(T) # [0, 4, 1, 2, 3, 6, 5]
 
 ```python
 # 개선된 prim 알고리즘
-def prim(u = 1):
-
-    import heapq
+def prim():
     res = 0
+
     hq = []
-    heapq.heappush(hq, (0, u)) # 임의의 정점을 선택하여 비어있는 T에 포함시킨다.
+    u = 1
+    visited[u] = True
 
-    for _ in range(n):
-        for cost,v in graph[u]: # 노드 u와 연결된 간선의 비용 중 최소비용이 있는지
-            if not visited[v]: # 방문하지 않은 노드
-                heapq.heappush(hq,(cost,v)) # O(logE)
+    for _ in range(n-1):
+        for cost, v in graph[u]:
+            if not visited[v]:
+                heapq.heappush(hq, (cost, v))
 
-        while hq: # hq가 empty면안됨
-            
-            c,v = heapq.heappop(hq) # O(logE)
-            if not visited[v]: # 방문한적 없을 경우, u노드 갱신
+        while hq:
+            cost, v = heapq.heappop(hq)
+            if not visited[v]:
+                res += cost
+                visited[v] = True
                 u = v
-                res += c
-                visited[u] = True
-                T.append(u)
                 break
 
     return res
