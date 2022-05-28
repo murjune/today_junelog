@@ -18,10 +18,9 @@ def dfs(x, y, z):
 
 n = int(input())
 arr = list(map(int,input().split()))
-if len(arr) == 1:
-    print(arr[0]//9 + 1)
-    exit()
-elif len(arr) == 2:
+if n == 1:
+    arr = arr + [0,0]
+elif n == 2:
     arr = arr +[0]
 
 attack = [9, 3, 1]
